@@ -28,7 +28,7 @@ class SparketxtClient
     {
         ray($this);
         ray($to . " : ".$message);
-        $send = Http::dd()->withHeaders([
+        $send = Http::withHeaders([
             'Authorization' => 'Basic '.base64_encode($this->apiKey.':'.$this->apiSecret)
         ])
             ->withBody('{
