@@ -11,7 +11,7 @@ class SparketxtChannel
     /**
      * @var SparketxtClient
      */
-    private $client;
+    private SparketxtClient $client;
 
     public function __construct(SparketxtClient $client)
     {
