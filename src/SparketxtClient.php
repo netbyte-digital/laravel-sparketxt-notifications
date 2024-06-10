@@ -39,7 +39,8 @@ class SparketxtClient
                     "format": "SMS"
                     },
                 ]
-            }')
+            }',
+                "application/json")
             ->post($this->sendEndpoint);
         ray($send);
         if($send->badRequest()) {
