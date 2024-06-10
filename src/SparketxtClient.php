@@ -42,6 +42,7 @@ class SparketxtClient
             }')
             ->post($this->sendEndpoint);
         if($send->failed()) {
+            ray($send);
             throw SparketxtNotification::serviceUnknownResponse();
         }
         if($send->badRequest()) {
