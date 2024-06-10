@@ -34,9 +34,7 @@ class SparketxtClient
             ->withBody('{
                 "messages": [
                     {
-                    "callback_url": "'.$this->callbackUrl.'",
                     "content": "'.$message.'",
-                    "delivery_report": "'.$this->deliveryReport.'",
                     "destination_number": "'.$to.'",
                     "format": "SMS"
                     },
