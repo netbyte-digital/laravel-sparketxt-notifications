@@ -32,16 +32,21 @@ class SparketxtClient
             'Authorization' => 'Basic '.base64_encode($this->apiKey.':'.$this->apiSecret)
         ])
             ->withBody(
-            '{
-                "messages": [
-                    {
-                        "content": "'.$message.'",
-                        "destination_number": "'.$to.'",
-                        "format": "SMS"
-                    },
-                ]
-            }',
-                "application/json")
+                '{
+  "messages": [
+    {
+      "content": "' .
+                $message .
+                '",
+      "destination_number": "' .
+                $to .
+                '",
+      "format": "SMS"
+    }
+  ]
+}',
+  "application/json"
+            )
             ->post($this->sendEndpoint);
         ray($send);
         if($send->badRequest()) {
