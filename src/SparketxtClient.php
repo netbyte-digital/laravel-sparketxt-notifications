@@ -16,9 +16,9 @@ class SparketxtClient
 
     public function __construct()
     {
-        $this->apiKey = config('services.sparketxt.api-key');
-        $this->apiSecret = config('services.sparketxt.api-secret');
-        $this->callbackUrl = config('services.sparketxt.callback-url') ?: null;
+        $this->apiKey = config('services.sparketxt.api_key');
+        $this->apiSecret = config('services.sparketxt.api_secret');
+        $this->callbackUrl = config('services.sparketxt.callback_url') ?: null;
         $this->deliveryReport = $this->callbackUrl != null;
 
         return $this;
@@ -41,15 +41,16 @@ class SparketxtClient
                 ]
             }')
             ->post($this->sendEndpoint);
-        if($send->failed()) {
-            ray($send);
-            throw SparketxtNotification::serviceUnknownResponse();
-        }
+
         if($send->badRequest()) {
             throw SparketxtNotification::badRequestResponse();
         }
         if($send->forbidden()) {
             throw SparketxtNotification::authorisationFailedResponse();
+        }
+        if($send->failed()) {
+            ray($send);
+            throw SparketxtNotification::serviceUnknownResponse();
         }
 
         $response = json_decode($send,true);
