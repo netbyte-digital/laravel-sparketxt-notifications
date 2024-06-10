@@ -28,26 +28,21 @@ class SparketxtClient
     {
         ray($this);
         ray($to . " : ".$message);
-        $send = Http::dd()->withHeaders([
+        $send = Http::withHeaders([
             'Authorization' => 'Basic '.base64_encode($this->apiKey.':'.$this->apiSecret)
         ])
-//            ->withBody(
-//                '{
-//  "messages": [
-//    {
-//      "content": "' .
-//                $message .
-//                '",
-//      "destination_number": "' .
-//                $to .
-//                '",
-//      "format": "SMS"
-//    }
-//  ]
-//}',
-//  "application/json"
-//            )
-                ->withBody('This is the body')
+            ->withBody(
+                '{
+  "messages": [
+    {
+      "content": "' . $message . '",
+      "destination_number": "' . $to . '",
+      "format": "SMS"
+    }
+  ]
+}',
+  "application/json"
+            )
             ->post($this->sendEndpoint);
         ray($send);
         if($send->badRequest()) {
