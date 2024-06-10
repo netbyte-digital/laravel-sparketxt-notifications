@@ -1,7 +1,7 @@
 {
-    "name": "laravel-notification-channels/sparketxt",
+    "name": "netbyte-digital/laravel-sparketxt-notifications",
     "description": "Send Laravel notifications via Spark (NZ) eTxt API",
-    "homepage": "https://github.com/laravel-notification-channels/sparketxt",
+    "homepage": "https://github.com/netbyte-digital/laravel-sparketxt-notifications",
     "license": "MIT",
     "authors": [
         {
