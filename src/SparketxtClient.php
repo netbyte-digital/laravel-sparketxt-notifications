@@ -41,7 +41,7 @@ class SparketxtClient
                 ]
             }')
             ->post($this->sendEndpoint);
-
+        ray($send);
         if($send->badRequest()) {
             throw SparketxtNotification::badRequestResponse();
         }
@@ -49,7 +49,6 @@ class SparketxtClient
             throw SparketxtNotification::authorisationFailedResponse();
         }
         if($send->failed()) {
-            ray($send);
             throw SparketxtNotification::serviceUnknownResponse();
         }
 
