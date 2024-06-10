@@ -31,12 +31,13 @@ class SparketxtClient
         $send = Http::withHeaders([
             'Authorization' => 'Basic '.base64_encode($this->apiKey.':'.$this->apiSecret)
         ])
-            ->withBody('{
+            ->withBody(
+            '{
                 "messages": [
                     {
-                    "content": "'.$message.'",
-                    "destination_number": "'.$to.'",
-                    "format": "SMS"
+                        "content": "'.$message.'",
+                        "destination_number": "'.$to.'",
+                        "format": "SMS"
                     },
                 ]
             }',
