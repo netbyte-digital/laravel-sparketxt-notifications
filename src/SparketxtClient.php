@@ -24,7 +24,7 @@ class SparketxtClient
         return $this;
     }
 
-    public function send($to,$message)
+    public function send($from,$to,$message)
     {
         ray($this);
         ray($to . " : ".$message);
